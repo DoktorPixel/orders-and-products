@@ -1,0 +1,9 @@
+.app {
+  display: flex;
+  min-height: 100vh;
+
+  &__content {
+    flex: 1;
+    background: #f5f7f9;
+  }
+}
