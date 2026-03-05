@@ -1,9 +1,50 @@
+:root {
+  --bg-main: #eef2f7;
+  --text-main: #1d2738;
+  --panel: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+}
+
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .app {
   display: flex;
   min-height: 100vh;
 
   &__content {
     flex: 1;
-    background: #f5f7f9;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  &__main {
+    padding: 18px;
+  }
+}
+
+.page-card {
+  background: var(--panel);
+  border: 1px solid #dde3ea;
+  border-radius: 14px;
+}
+
+@media (max-width: 900px) {
+  .app {
+    flex-direction: column;
   }
 }

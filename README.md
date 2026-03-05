@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Orders & Products (Next.js + TypeScript)
 
-## Getting Started
+Тестовое приложение с двумя страницами: `Orders` и `Products`.
 
-First, run the development server:
+## Стек
+- React 19 + Next.js 16 (App Router, SSR/SSG)
+- TypeScript
+- Redux Toolkit + React Redux
+- SCSS (БЭМ) + Bootstrap
+- REST через Axios (`/api/orders`, `/api/products`)
+- WebSocket (`socket.io-client`) + fallback-счетчик активных вкладок
+- `react-hook-form` (валидация формы удаления)
+- Lazy loading (`next/dynamic`)
+- Charts (`chart.js`, `react-chartjs-2`)
+- Maps (OpenStreetMap embed)
+- JWT (`jwt-decode`)
+- Web Storage (`localStorage`)
+- i18n (RU/EN переключение)
 
+## Реализовано по заданию
+- Компоненты: `Navigation`, `TopMenu`, страницы `Orders` и `Products`.
+- Роутинг между страницами и анимация переходов.
+- В `TopMenu`: текущее время/дата в real-time, язык, пользователь из JWT, счетчик активных вкладок.
+- В `Orders`:
+  - список приходов с количеством продуктов;
+  - даты в двух форматах;
+  - суммы по валютам (USD/UAH);
+  - открытие/закрытие детального блока справа;
+  - удаление прихода через попап с валидацией (нужно ввести `DELETE`);
+  - lazy-блоки: график и карта.
+- В `Products`:
+  - список всех продуктов;
+  - фильтр по типу (select);
+  - название, тип, статус, серийный номер;
+  - даты гарантии и дата создания (разные форматы);
+  - цены в двух валютах;
+  - название связанного прихода.
+
+## Установка и запуск
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Открыть: `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Проверки
+```bash
+npm run lint
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Структура
+- `src/app/orders/page.tsx` - страница приходов
+- `src/app/products/page.tsx` - страница продуктов
+- `src/components/Navigation` - меню навигации
+- `src/components/TopMenu` - верхнее меню
+- `src/store` - Redux slices/store
+- `src/app/api` - REST endpoints
+- `src/lib` - i18n и форматирование
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## WebSocket примечание
+Клиент пытается подключиться к `http://localhost:4000` через `socket.io-client`.  
+Если сокет-сервер недоступен, включается локальный fallback-счетчик активных вкладок между окнами браузера.

@@ -1,0 +1,162 @@
+.ordersPage {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 14px;
+}
+
+.ordersPage__list,
+.ordersPage__details {
+  padding: 14px;
+}
+
+.ordersPage__title {
+  font-size: 24px;
+  margin: 0 0 12px;
+}
+
+.ordersPage__listItems {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ordersPage__item {
+  border: 1px solid #dde3ea;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  cursor: pointer;
+  background: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 14px rgba(31, 50, 87, 0.08);
+  }
+}
+
+.ordersPage__item_active {
+  border-color: #5f8df6;
+  background: #eef4ff;
+}
+
+.ordersPage__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: #3a4558;
+}
+
+.ordersPage__btns {
+  display: flex;
+  gap: 6px;
+
+  button {
+    border: none;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+}
+
+.ordersPage__btnOpen {
+  background: #d8e8ff;
+  color: #264a97;
+}
+
+.ordersPage__btnRemove {
+  background: #ffe1e1;
+  color: #a32525;
+}
+
+.ordersPage__detailsGrid {
+  display: grid;
+  gap: 10px;
+}
+
+.ordersPage__detailRow {
+  border: 1px solid #dde3ea;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.ordersPage__empty {
+  padding: 24px;
+  color: #5a6880;
+}
+
+.ordersPage__modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.ordersPage__modal {
+  width: min(420px, calc(100% - 24px));
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #dde3ea;
+  padding: 16px;
+}
+
+.ordersPage__field {
+  display: grid;
+  gap: 6px;
+  margin: 12px 0;
+
+  input {
+    border: 1px solid #d6deea;
+    border-radius: 8px;
+    padding: 8px 10px;
+  }
+}
+
+.ordersPage__error {
+  color: #a32525;
+  font-size: 12px;
+}
+
+.ordersPage__modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+
+  button {
+    border: none;
+    border-radius: 8px;
+    padding: 7px 11px;
+    font-weight: 600;
+  }
+}
+
+.ordersPage__cancel {
+  background: #edf1f8;
+}
+
+.ordersPage__confirm {
+  background: #ffdbdb;
+  color: #7d1111;
+}
+
+.ordersPage__section {
+  border: 1px solid #dde3ea;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+@media (max-width: 1080px) {
+  .ordersPage {
+    grid-template-columns: 1fr;
+  }
+}
